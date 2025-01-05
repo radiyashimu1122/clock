@@ -10,25 +10,38 @@ body {
  justify-content: center;
  align-items: center;
  height: 100vh;
- background: radial-gradient(circle, #4e54c8, #8f94fb); 
+ background: linear-gradient(45deg, #4e54c8, #8f94fb, #1e90ff);
  color: white;
  overflow: hidden;
  background-attachment: fixed;
+ animation: gradientMove 10s ease infinite;
+}
+
+@keyframes gradientMove {
+ 0% { background: linear-gradient(45deg, #4e54c8, #8f94fb, #1e90ff); }
+ 50% { background: linear-gradient(45deg, #8f94fb, #1e90ff, #4e54c8); }
+ 100% { background: linear-gradient(45deg, #1e90ff, #4e54c8, #8f94fb); }
 }
 
 .card {
- background: rgba(0, 0, 0, 0.6);
- padding: 30px;
+ background: rgba(0, 0, 0, 0.7); 
+ padding: 40px;
  border-radius: 20px;
- box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+ box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
  width: 100%;
- max-width: 350px; 
+ max-width: 350px;
  text-align: center;
  backdrop-filter: blur(15px);
  display: flex;
  flex-direction: column;
  justify-content: center;
  align-items: center;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+ transform: scale(1.05);
+ box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 .clock-container {
@@ -36,22 +49,29 @@ body {
 }
 
 .clock-icon {
- width: 120px;
- height: 120px;
+ width: 150px;
+ height: 150px;
  border-radius: 50%;
  background: url('https://img.icons8.com/ios/452/clock.png') no-repeat center center;
  background-size: cover;
  display: flex;
  justify-content: center;
  align-items: center;
- box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.7);
  margin: 0 auto 20px;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ border-radius: 50%; 
+}
+
+.clock-icon:hover {
+ transform: rotate(360deg);
+ box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
 }
 
 .clock {
  font-size: 40px;
  font-weight: bold;
- color: #1e90ff;  
+ color: #1e90ff;
  text-align: center;
  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 30px rgba(255, 255, 255, 0.7);
  position: absolute;
@@ -62,9 +82,11 @@ body {
 .date {
  font-size: 18px;
  font-weight: bold;
- color: #8a2be2;  
+ color: #8a2be2;
  letter-spacing: 1px;
  text-transform: uppercase;
+ margin-top: 15px;
+ text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
 @keyframes glowing {
@@ -75,6 +97,28 @@ body {
 
 #time {
  animation: glowing 1.5s infinite alternate;
+}
+
+button {
+ background-color: #1e90ff;
+ color: white;
+ border: none;
+ padding: 10px 20px;
+ font-size: 18px;
+ font-weight: bold;
+ border-radius: 15px;
+ margin-top: 20px;
+ cursor: pointer;
+ transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+ background-color: #8a2be2;
+ transform: scale(1.05);
+}
+
+button:focus {
+ outline: none;
 }
 
 
@@ -94,7 +138,12 @@ body {
  }
 
  .date {
-     font-size: 16px; 
+     font-size: 16px;
+ }
+
+ button {
+     font-size: 16px;
+     padding: 8px 15px;
  }
 }
 
@@ -110,10 +159,15 @@ body {
  }
 
  .clock {
-     font-size: 25px; 
+     font-size: 25px;
  }
 
  .date {
-     font-size: 14px; 
+     font-size: 14px;
+ }
+
+ button {
+     font-size: 14px;
+     padding: 6px 12px;
  }
 }
